@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Background gradient for the page */
+        body {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: #333;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container for the form */
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Form label and input styling */
+        label {
+            display: block;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        /* Input field focus effect */
+        input[type="number"]:focus,
+        input[type="date"]:focus {
+            border-color: #3498db;
+            background-color: #eaf4fd;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.6);
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Button focus effect */
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.7);
+        }
+
+        /* Error message styling */
+        .error {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Subtle hover effect on the container */
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+</style>
+</head>
+<body>
+    <h1>BUS BOOKING</h1>
+<form action="conform">
+    <label>NO_OF_SEATS:</label>
+    <input type="number" name="no_of_seats" required><br><br>
+    <input type="date" name="travelling_date" min="{{ today }}"><br><br>
+    <input type="hidden" name="service_no" value="{{ service_no }}">
+    <input type="hidden" name="price" value="{{ price }}" >
+    <button type="submit">Submit</button>
+</form>
+{% if error %}
+    <p><h1>{{ error }}</h1></p>
+{% endif %}
+</body>
+</html>

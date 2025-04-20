@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelling Page</title>
+</head>
+<body>
+    <h1>Cancel Bus Ticket</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="id">Enter Your ID</label><br>
+        <input type="number" name="" id=""><br>
+        <label for="number">Enter Your Ticket Number</label><br>
+        <input type="number" name=" " id=""><br>
+        <button type="submit">Cancel Ticket</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+         * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f4f7fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Centered table container */
+        .table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        /* Styling the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        /* Table header styling */
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Row hover effect */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Cancel button styling */
+        .cancel-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cancel-button:hover {
+            background-color: #34495e;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            button {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+            .cancel-button {
+                width: 180px;
+                font-size: 1rem;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Service no</th>
+            <th>form</th>
+            <th>to</th>
+            <th>seats_available</th>
+            <th>price</th>
+            <th>Booking</th>
+        </tr>
+        {% for i in bus_details %}
+        <tr>
+            <td>{{ i.service_no }}</td>
+            <td>{{ i.start }}</td>
+            <td>{{ i.end }}</td>
+            <td>{{ i.seats_available }}</td>
+            <td>{{ i.price }}</td>
+            <td><a href="{% url 'bookbus' %}?service_no={{ i.service_no}}&price={{ i.price }}"><button>BOOK A BUS</button></a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="cancelbus"><button>CANCEL  A Bus</button></a>
+</body>
+</html>
